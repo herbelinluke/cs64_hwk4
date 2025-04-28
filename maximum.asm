@@ -23,9 +23,47 @@ main:
 	la $a0, enter 
 	li $v0, 4
 	syscall
-	la $a0, newline
+	li $v0, 5
 	syscall
+	move $t0, $v0
+
+	la $a0, enter 
+	li $v0, 4
+	syscall
+	li $v0, 5
+	syscall
+	move $t1, $v0
 	
+	la $a0, enter 
+	li $v0, 4
+	syscall
+	li $v0, 5
+	syscall
+	move $t2, $v0
+	
+	la $a0, Maximum
+	li $v0, 4
+	syscall
+	li $v0, 1
+	
+	blt $t0, $t1, BMax
+	blt $t0, $t2, CMax		
+AMax:
+	move $a0, $t0
+	syscall
+	j exit
+BMax:
+	blt $t1, $t2, CMax
+	move $a0, $t1
+	syscall	
+	j exit
+CMax:
+	move $a0, $t2
+	syscall
 exit:
 	# TODO: Write code to properly exit a SPIM simulation
-
+	la $a0, newline
+	li $v0, 4
+	syscall
+	li $v0, 10
+	syscall
