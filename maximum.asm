@@ -9,8 +9,9 @@
 .data
 	# TODO: Complete these incomplete declarations / initializations
 
-	.asciiz "Enter the next number:\n"
-    .asciiz "\n"
+    enter:	.asciiz "Enter the next number:\n"
+    newline:	.asciiz "\n"
+    Maximum:	.asciiz "Maximum: "
 
 #Text Area (i.e. instructions/code directive)
 .text
@@ -19,7 +20,12 @@ main:
 
 	# TODO: Write your code here
     # You can have other labels expressed here, if you need to
-
+	la $a0, enter 
+	li $v0, 4
+	syscall
+	la $a0, newline
+	syscall
+	
 exit:
 	# TODO: Write code to properly exit a SPIM simulation
 
