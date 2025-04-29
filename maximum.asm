@@ -45,7 +45,15 @@ main:
 	li $v0, 4
 	syscall
 	li $v0, 1
-	
+	bge $t0, $zero, Apos
+	sub $t0, $zero, $t0	
+Apos:
+	bge $t1, $zero, Bpos
+	sub $t1, $zero, $t1
+Bpos:
+	bge $t2, $zero, Cpos
+	sub $t2, $zero, $t2
+Cpos:	
 	blt $t0, $t1, BMax
 	blt $t0, $t2, CMax		
 AMax:
