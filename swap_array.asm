@@ -195,6 +195,23 @@ doSwap:
         # }
 
         # TODO: fill in the assembly code here:
+	addiu $t0, $zero, 0
+	addiu $t1, $zero, 1
+	la $t2, myArray
+loop:
+	li $t7, 11
+	bge $t0, $t7, finished
+	sll $t3, $t0, 2
+	addu $t3, $t3, $t2
+	sll $t4, $t1, 2
+	addu $t4, $t4, $t2
+	lw $t5, 0($t3)
+	lw $t6, 0($t4)
+	sw $t6, 0($t3)
+	sw $t5, 0($t4)
+	addiu $t0, $t0, 2
+	addiu $t1, $t1, 2
+	j loop
 
 
 finished:
